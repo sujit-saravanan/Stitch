@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.23)
 project(stitch)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_FLAGS )
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY /home/dappercore/CLionProjects/stitch/output)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../output)
 
 
 add_library(modules STATIC ../modules/modules/modules.cpp)
