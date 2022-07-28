@@ -8,7 +8,7 @@ std::string createCMake(const std::filesystem::path& current_dir, const std::str
                   "project(" + project_name + ")\n"
                   "set(CMAKE_CXX_STANDARD " + cpp_version + ")\n"
                   "set(CMAKE_CXX_FLAGS " + compiler_flags + ")\n"
-                  "set(CMAKE_RUNTIME_OUTPUT_DIRECTORY " + current_dir.string() + "/output)\n\n\n";
+                  "set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../output)\n\n\n";
     CMakeLists += getLibraries(current_dir);
     CMakeLists += "\n\nadd_executable(${PROJECT_NAME} ../source/main.cpp)\n\n";
     CMakeLists += getTargetLinkLibraries(current_dir);
