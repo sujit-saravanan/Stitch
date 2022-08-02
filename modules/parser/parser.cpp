@@ -7,7 +7,7 @@ std::string getLibraries(const std::filesystem::path& current_dir){
         std::string module_name = module.path().filename().string();
         libraries += "add_library(";
         libraries += module_name;
-        libraries += " OBJECT ../modules/";
+        libraries += " STATIC ../modules/";
         libraries += module_name;
         libraries += "/";
         libraries += module_name;
