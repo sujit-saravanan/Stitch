@@ -5,19 +5,19 @@ set(CMAKE_CXX_FLAGS )
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../output)
 
 
-add_library(modules OBJECT ../modules/modules/modules.cpp)
+add_library(modules STATIC ../modules/modules/modules.cpp)
 target_include_directories(modules PUBLIC ../modules/modules/include)
 
-add_library(projectmanager OBJECT ../modules/projectmanager/projectmanager.cpp)
+add_library(projectmanager STATIC ../modules/projectmanager/projectmanager.cpp)
 target_include_directories(projectmanager PUBLIC ../modules/projectmanager/include)
 
-add_library(parser OBJECT ../modules/parser/parser.cpp)
+add_library(parser STATIC ../modules/parser/parser.cpp)
 target_include_directories(parser PUBLIC ../modules/parser/include)
 
-add_library(assist OBJECT ../modules/assist/assist.cpp)
+add_library(assist STATIC ../modules/assist/assist.cpp)
 target_include_directories(assist PUBLIC ../modules/assist/include)
 
-add_library(init OBJECT ../modules/init/init.cpp)
+add_library(init STATIC ../modules/init/init.cpp)
 target_include_directories(init PUBLIC ../modules/init/include)
 
 

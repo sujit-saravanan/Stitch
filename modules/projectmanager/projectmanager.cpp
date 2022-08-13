@@ -36,7 +36,7 @@ void updateCMake(const std::filesystem::path& current_dir){
     std::string cpp_version;
     std::string compiler_flags;
     if (std::filesystem::exists(current_dir / "build" / "CMakeLists.txt")){
-        get_cmake_file_info(current_dir, project_name, cpp_version);
+        get_cmake_file_info(current_dir, project_name, cpp_version, compiler_flags);
     } else {
         std::cout << "Could not find initialized project, please run stitch init\n";
     }

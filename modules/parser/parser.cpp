@@ -5,18 +5,22 @@ std::string getLibraries(const std::filesystem::path& current_dir){
     std::string libraries;
     for(auto& module : std::filesystem::directory_iterator(current_dir / "modules")){
         std::string module_name = module.path().filename().string();
-        libraries += "add_library(";
-        libraries += module_name;
-        libraries += " STATIC ../modules/";
-        libraries += module_name;
-        libraries += "/";
-        libraries += module_name;
-        libraries += ".cpp)\n";
-        libraries += "target_include_directories(";
-        libraries += module_name;
-        libraries += " PUBLIC ../modules/";
-        libraries += module_name;
-        libraries += "/include)\n\n";
+        for (const auto & file : std::filesystem::directory_iterator(module))
+            if(!std::filesystem::is_directory(file)){
+                std::string source_name = file.path().stem().string();
+                libraries += "add_library(";
+                libraries += source_name;
+                libraries += " STATIC ../modules/";
+                libraries += module_name;
+                libraries += "/";
+                libraries += source_name;
+                libraries += file.path().extension().string();
+                libraries += ")\ntarget_include_directories(";
+                libraries += source_name;
+                libraries += " PUBLIC ../modules/";
+                libraries += module_name;
+                libraries += "/include)\n\n";
+            }
     }
     return libraries;
 }
