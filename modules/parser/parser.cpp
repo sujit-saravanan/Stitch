@@ -38,13 +38,7 @@ std::string getIncludes(const std::filesystem::path& filepath){
                 module = line.substr(10, line.length() - 15);
             else
                 module = line.substr(10, line.length() - 13);
-            for(auto& module_name : std::filesystem::directory_iterator(filepath.parent_path().parent_path().parent_path())){
-                if (module_name.path().stem() == module){
-                    includes += "target_link_libraries(" + filepath.stem().string() + " PUBLIC " + module + ")\n";
-                    break;
-                }
-            }
-
+            includes += "target_link_libraries(" + filepath.stem().string() + " PUBLIC " + module + ")\n";
         }
     }
     file.close();
