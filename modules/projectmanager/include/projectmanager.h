@@ -1,6 +1,7 @@
 #pragma once
 #include <filesystem>
 #include <fstream>
+#include <thread>
 #include "parser.h"
 
 std::string createCMake(const std::filesystem::path& current_dir, const std::string& project_name, const std::string& cpp_version, const std::string& compiler_flags);
