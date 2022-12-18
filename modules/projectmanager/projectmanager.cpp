@@ -56,7 +56,7 @@ void buildProject(const std::filesystem::path& current_dir, const std::string& p
     std::string compile_command = "cd build && ninja -j ";
     compile_command += std::to_string(std::thread::hardware_concurrency());
     compile_command += " --quiet || exit";
-    std::system(compile_command);
+    std::system(compile_command.c_str());
 }
 
 void runProject(const std::filesystem::path& binary_path){
