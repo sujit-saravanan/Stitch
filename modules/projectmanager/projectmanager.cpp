@@ -53,7 +53,7 @@ void buildProject(const std::filesystem::path& current_dir, const std::string& p
         std::filesystem::remove(binary_path);
     std::string cmake_command = "cd build && cmake -DCMAKE_BUILD_TYPE=" + build_type + " -DCMAKE_MAKE_PROGRAM=ninja -G Ninja . > /dev/null";
     std::system(cmake_command.c_str());
-    std::string compile_cmomand = "cd build && ninja -j ";
+    std::string compile_command = "cd build && ninja -j ";
     compile_command += std::to_string(std::thread::hardware_concurrency());
     compile_command += " --quiet || exit";
     std::system(compile_command);
