@@ -34,6 +34,10 @@ void createModule(int argc, char* argv[], const std::filesystem::path& current_d
 void deleteModule(int argc, char* argv[], const std::filesystem::path& current_dir){
     std::ofstream filehandler;
     for (int i = 3; i < argc; i++){
+        if (std::strcmp(argv[i], argv[i]) == 0){
+            std::cout << "Cannot delete precompiled header module, skipping...\n";
+            continue;
+        }
         std::filesystem::remove_all(current_dir / "modules" / argv[i]);
     }
     updateCMake(current_dir);

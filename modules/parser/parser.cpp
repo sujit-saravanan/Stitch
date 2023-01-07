@@ -5,6 +5,9 @@ std::string getLibraries(const std::filesystem::path& current_dir){
     std::string libraries;
     for(auto& module : std::filesystem::directory_iterator(current_dir / "modules")){
         std::string module_name = module.path().filename().string();
+        if (module.path().stem().string() == "pch"){
+            continue;
+        }
         for (const auto & file : std::filesystem::directory_iterator(module))
             if(!std::filesystem::is_directory(file)){
                 std::string source_name = file.path().stem().string();
@@ -38,7 +41,10 @@ std::string getIncludes(const std::filesystem::path& filepath){
                 module = line.substr(10, line.length() - 15);
             else
                 module = line.substr(10, line.length() - 13);
-            includes += "target_link_libraries(" + filepath.stem().string() + " PUBLIC " + module + ")\n";
+            if (std::strcmp(module.c_str(), "pch") == 0)
+                includes = std::string("target_include_directories(" + filepath.stem().string() + " PUBLIC ../modules/pch/include)\ntarget_precompile_headers(" + filepath.stem().string() + " PUBLIC ../modules/pch/include/pch.h)\n").append(includes);
+            else
+                includes += "target_link_libraries(" + filepath.stem().string() + " PUBLIC " + module + ")\n";
         }
     }
     file.close();
@@ -61,7 +67,10 @@ std::string getMainIncludes(const std::filesystem::path& current_dir){
                 module = line.substr(10, line.length() - 15);
             else
                 module = line.substr(10, line.length() - 13);
-            includes += "target_link_libraries(${PROJECT_NAME} PUBLIC " + module + ")\n";
+            if (std::strcmp(module.c_str(), "pch") == 0)
+                includes = std::string("target_precompile_headers(${PROJECT_NAME} PUBLIC ../modules/pch/include/pch.h)\n").append(includes);
+            else
+                includes += "target_link_libraries(${PROJECT_NAME} PUBLIC " + module + ")\n";
         }
     }
     file.close();

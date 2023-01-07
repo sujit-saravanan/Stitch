@@ -1,8 +1,7 @@
 #pragma once
-#include <filesystem>
-#include <fstream>
 #include "parser.h"
-#include "projectmanager.h"
+#include "modules.h"
+
 
 void createBaseDirectories(const std::filesystem::path& current_dir);
 void createMainFile(const std::filesystem::path& current_dir);

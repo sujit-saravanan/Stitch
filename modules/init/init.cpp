@@ -17,7 +17,7 @@ void createMainFile(const std::filesystem::path& current_dir){
     filewriter << "#include <iostream>\n"
                    "\n"
                    "int main() {\n"
-                   "    std::cout << \"Hello World!\";\n"
+                   "    std::cout << \"Hello World!\\n\";\n"
                    "    return 0;\n"
                    "}";
     filewriter.close();
@@ -41,5 +41,16 @@ void init(const std::filesystem::path& current_dir){
     std::ofstream filewriter;
     filewriter.open(current_dir / "build" / "CMakeLists.txt");
     filewriter << createCMake(current_dir, project_name, cpp_version, "");
+    filewriter.close();
+
+    std::filesystem::create_directories(current_dir / "modules" / "pch");
+    std::filesystem::create_directories(current_dir / "modules" / "pch" / "include");
+
+    filewriter.open(current_dir / "modules" / "pch" / "include" / "pch.h");
+    filewriter << "#pragma once";
+    filewriter.close();
+
+    filewriter.open(current_dir / "modules" / "pch" / "pch.cpp");
+    filewriter << "#include \"" << "pch.h" << "\"";
     filewriter.close();
 }

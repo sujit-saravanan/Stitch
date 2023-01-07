@@ -1,9 +1,5 @@
 #pragma once
-#include <iostream>
-#include <filesystem>
-#include <fstream>
-#include <vector>
-#include <future>
+#include "pch.h"
 
 
 std::string getLibraries(const std::filesystem::path& current_dir);
