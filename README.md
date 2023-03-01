@@ -18,20 +18,20 @@ ninja -j 20
      [init] - initializes a stitch project
      
      [run] - builds and runs the project
-          [dev] - builds and runs the project in debug mode
+          [debug] - builds and runs the project in debug mode
           [release] - builds and runs the project in release mode
           
-     [modules] - creates or deletes modules
-          [create] - creates all modules passed as arguments
-          [delete] - deletes all modules passed as arguments
+     [build] - builds the project but does not run it
+          [debug] - builds the project in debug mode
+          [release] - builds the project in release mode
           
      [set] - sets a CMake/compiler variable
           [compiler-flags] - sets the compiler flags to passed arguments
           [cpp-version] - sets the C++ version to passed argument
           [project-name] - sets the project name to passed argument
-          
-     [build] - builds the project but does not run it
-          [dev] - builds the project in debug mode
-          [release] - builds the project in release mode
-          
+     
+     [create] - creates .cpp + .h files for all the passed arguments
+     
+     [delete] - deltes .cpp + .h files for all the passed arguments
+     
      [help] - prints out this help string
