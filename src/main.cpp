@@ -130,6 +130,7 @@ void init() {
     std::cin  >> cpp_version;
 
     fs::create_directories("src");
+    fs::create_directories("src/compiled");
     fs::create_directories("build");
     fs::create_directories("assets");
     fs::create_directories("output");
