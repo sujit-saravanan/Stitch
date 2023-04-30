@@ -16,22 +16,23 @@ ninja -j 20
 ```
 ## Usage
      [init] - initializes a stitch project
-     
      [run] - builds and runs the project
           [debug] - builds and runs the project in debug mode
           [release] - builds and runs the project in release mode
-          
      [build] - builds the project but does not run it
           [debug] - builds the project in debug mode
           [release] - builds the project in release mode
-          
      [set] - sets a CMake/compiler variable
           [compiler-flags] - sets the compiler flags to passed arguments
           [cpp-version] - sets the C++ version to passed argument
           [project-name] - sets the project name to passed argument
-     
-     [create] - creates .cpp + .h files for all the passed arguments
-     
-     [delete] - deltes .cpp + .h files for all the passed arguments
-     
+          [export-compiler-commands] - sets compiler_commands.json generation
+               [ON] - enables compiler_commands.json generation
+               [OFF] - enables compiler_commands.json generation
+     [create] - creates .cpp + .h files for all passed arguments
+          [internal] - creates the module in the 'internal' directory
+          [vendor] - creates the module in the 'vendor'
+     [delete] - deletes .cpp + .h files for all passed arguments
+          [internal] - deletes the module in the 'internal' directory
+          [vendor] - deletes the module in the 'vendor'
      [help] - prints out this help string
