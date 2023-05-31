@@ -9,7 +9,7 @@ So far, only Linux is guaranteed to be supported.
 
 **Building from Scratch:** The executable can be found in the `output` directory
 ```bash
-git clone https://github.com/sujit-saravanan/stitch.git
+git clone https://github.com/sujit-saravanan/stitch-build-system.git
 cd stitch/build
 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_MAKE_PROGRAM=ninja -G Ninja .
 ninja -j 20
